@@ -41,8 +41,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 
 	// ゲームループで使う変数の宣言
+	int Change = 0;
 
-
+	int Time = 0;
 	// 最新のキーボード情報用
 	char keys[256] = {0};
 
@@ -53,6 +54,10 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	while (true) {
 		// 最新のキーボード情報だったものは1フレーム前のキーボード情報として保存
 		// 最新のキーボード情報を取得
+		for (int i = 0; i < 256; ++i)
+		{
+			oldkeys[i] = keys[i];
+		}
 		GetHitKeyStateAll(keys);
 
 		// 画面クリア
@@ -60,8 +65,17 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		//---------  ここからプログラムを記述  ----------//
 
 		// 更新処理
-		SceneManager::GetInstance()->
+		SceneManager::GetInstance()->ChangeScene(Change);
 
+
+		if (keys[KEY_INPUT_SPACE] == 1 && oldkeys[KEY_INPUT_SPACE] == 0)
+		{
+			Change += 1;
+		}
+		if (Change > 3)
+		{
+			Change = 0;
+		}
 		// 描画処理
 
 		//---------  ここまでにプログラムを記述  ---------//
