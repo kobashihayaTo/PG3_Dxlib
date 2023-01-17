@@ -69,7 +69,6 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		{
 			sceneNo = sceneNo + 1;
 		}
-
 		if (sceneNo > 3)
 		{
 			sceneNo = 0;
