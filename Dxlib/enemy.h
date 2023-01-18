@@ -2,9 +2,6 @@
 
 class Enemy 
 {
-protected:
 public:
-	static int enemyCount;
-	Enemy()	 { enemyCount++; }
-	~Enemy() { enemyCount--; }
+	static bool isAllDead;
 };

@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int Enemy::enemyCount = 0;
+bool Enemy::isAllDead = false;
 
 // ウィンドウのタイトルに表示する文字列
 const char TITLE[] = "LE2C_10_コバシ_ハヤト";
@@ -46,11 +46,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 
 	// ゲームループで使う変数の宣言
-	Enemy* enemyCount1 = new Enemy;
-	Enemy* enemyCount2 = new Enemy;
-	Enemy* enemyCount3 = new Enemy;
-
-	bool Dead = false;
+	Enemy* enemy1 = new Enemy;
+	Enemy* enemy2 = new Enemy;
+	Enemy* enemy3 = new Enemy;
 
 	// 最新のキーボード情報用
 	char keys[256] = {0};
@@ -75,23 +73,29 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		// 更新処理
 		if (keys[KEY_INPUT_SPACE] == 1 && oldkeys[KEY_INPUT_SPACE] == 0)
 		{
-			Dead = true; 
-			cout << Enemy::enemyCount << endl;
-			delete enemyCount1;
-			cout << Enemy::enemyCount << endl;
-			delete enemyCount2;
-			delete enemyCount3;
-			cout << Enemy::enemyCount << endl;
-
+			enemy1->isAllDead = true;
+		}
+		if (keys[KEY_INPUT_A] == 1 && oldkeys[KEY_INPUT_A] == 0)
+		{
+			enemy2->isAllDead = true;
+		}
+		if (keys[KEY_INPUT_S] == 1 && oldkeys[KEY_INPUT_S] == 0)
+		{
+			enemy3->isAllDead = true;
 		}
 		// 描画処理
-		for (int i = 0; i < Enemy::enemyCount; i++) {
-			if (Dead == false)
-			{
-				DrawBox(20, 20, 40, 40, GetColor(255, 0, 0), true);
-				DrawBox(50, 50, 70, 70, GetColor(255, 0, 0), true);
-				DrawBox(90, 90, 110,110, GetColor(255, 0, 0), true);
-			}
+
+		if (enemy1->isAllDead == false)
+		{
+			DrawBox(20, 20, 40, 40, GetColor(255, 0, 0), true);
+		}
+		if (enemy2->isAllDead == false)
+		{
+			DrawBox(40, 40, 60, 60, GetColor(255, 0, 0), true);
+		}
+		if (enemy3->isAllDead == false)
+		{
+			DrawBox(80, 80, 100, 100, GetColor(255, 0, 0), true);
 		}
 		//---------  ここまでにプログラムを記述  ---------//
 		// (ダブルバッファ)裏面
