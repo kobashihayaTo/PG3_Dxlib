@@ -4,8 +4,9 @@ class Enemy
 {
 public:
 	//©ìƒƒ“ƒoŠÖ”
-	void Func1();
-	void Func2();
+	void proximity();
+	void shooting();
+	void elimination();
 
 	void Update();
 private:

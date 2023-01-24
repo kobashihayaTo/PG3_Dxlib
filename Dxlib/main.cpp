@@ -4,8 +4,6 @@
 
 using namespace std;
 
-int Enemy::enemyCount = 0;
-
 // ウィンドウのタイトルに表示する文字列
 const char TITLE[] = "LE2C_10_コバシ_ハヤト";
 
@@ -73,26 +71,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		//---------  ここからプログラムを記述  ----------//
 
 		// 更新処理
-		if (keys[KEY_INPUT_SPACE] == 1 && oldkeys[KEY_INPUT_SPACE] == 0)
-		{
-			Dead = true; 
-			cout << Enemy::enemyCount << endl;
-			delete enemyCount1;
-			cout << Enemy::enemyCount << endl;
-			delete enemyCount2;
-			delete enemyCount3;
-			cout << Enemy::enemyCount << endl;
 
-		}
 		// 描画処理
-		for (int i = 0; i < Enemy::enemyCount; i++) {
-			if (Dead == false)
-			{
-				DrawBox(20, 20, 40, 40, GetColor(255, 0, 0), true);
-				DrawBox(50, 50, 70, 70, GetColor(255, 0, 0), true);
-				DrawBox(90, 90, 110,110, GetColor(255, 0, 0), true);
-			}
-		}
+
 		//---------  ここまでにプログラムを記述  ---------//
 		// (ダブルバッファ)裏面
 		ScreenFlip();
