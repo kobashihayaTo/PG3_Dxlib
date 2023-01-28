@@ -1,20 +1,21 @@
-#include "Enemy.h"
-#include "stdio.h"
+#include "Shape.h"
+#include "Circle.h"
+#include "Rectangle.h"
 
 int main()
 {
-	Enemy enemy;
-	int input;
+	IShape* iShape[2];
+	iShape[0] = new Circle;
+	iShape[1] = new Rectangle;
 
-	while (true)
-	{
-		printf("0:exit 1:continue==>");
-		scanf_s("%d", &input);
-		if (input == 3)break;
+	iShape[0]->size();
+	iShape[0]->draw();
 
-		enemy.Updata();
-		enemy.Draw();
-	}
+	iShape[1]->size();
+	iShape[1]->draw();
+
+	delete iShape[0];
+	delete iShape[1];
 
 	return 0;
 }
